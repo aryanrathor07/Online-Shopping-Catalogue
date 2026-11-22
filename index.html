@@ -9,21 +9,13 @@
   <meta property="og:description" content="A clean 1st-semester B.Tech academic prototype for an Online Shopping Catalogue with product categories, shopping cart, and bill calculation." />
   <meta property="og:type" content="website" />
 
-  <!-- =========================================================
-       CSS3 SECTION: Minimalist Box Model & Flexbox Only
-       Color Rule: 90% Neutral (#f8f9fa, #ffffff),
-                   8% Dark Text & Thin Borders (#212529, #dee2e6),
-                   2% Single Accent Blue (#2563eb) for Buttons
-       ========================================================= -->
   <style>
-    /* Reset basic spacing using the Box Model */
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
-    /* Page background (90% neutral light gray) and clean system font */
     body {
       font-family: Arial, Helvetica, sans-serif;
       background-color: #f8f9fa;
@@ -31,7 +23,6 @@
       line-height: 1.5;
     }
 
-    /* Semantic Header Styling */
     header {
       background-color: #ffffff;
       border-bottom: 1px solid #dee2e6;
@@ -50,7 +41,6 @@
       color: #495057;
     }
 
-    /* Semantic Navigation Bar using Flexbox */
     nav {
       background-color: #ffffff;
       border-bottom: 1px solid #dee2e6;
@@ -75,14 +65,12 @@
       color: #2563eb;
     }
 
-    /* Main Content Container centered with max-width */
     main {
       max-width: 1140px;
       margin: 24px auto;
       padding: 0 16px;
     }
 
-    /* Category Section Spacing */
     section {
       margin-bottom: 36px;
     }
@@ -95,14 +83,12 @@
       color: #212529;
     }
 
-    /* Flexbox Container for Product Cards */
     .product-list {
       display: flex;
       flex-wrap: wrap;
       gap: 16px;
     }
 
-    /* Individual Product Card (Semantic <article>) using Box Model */
     .product-card {
       background-color: #ffffff;
       border: 1px solid #dee2e6;
@@ -113,7 +99,6 @@
       justify-content: space-between;
     }
 
-    /* Clean Placeholder Image Styling for Laptops */
     .product-card img {
       width: 100%;
       height: 140px;
@@ -123,8 +108,7 @@
       margin-bottom: 12px;
       display: block;
     }
-
-    .product-card h3 {
+    .product-card img {
       font-size: 16px;
       margin-bottom: 6px;
       color: #212529;
@@ -143,7 +127,7 @@
       margin-bottom: 12px;
     }
 
-    /* 2% Single Accent Color applied to Add to Cart Buttons */
+  
     .add-btn {
       background-color: #ff0000;
       color: #ffffff;
@@ -159,7 +143,6 @@
       background-color: #b90101;
     }
 
-    /* Shopping Cart & Bill Summary Section */
     #cart-section {
       background-color: #ffffff;
       border: 1px solid #dee2e6;
@@ -184,7 +167,6 @@
       font-weight: bold;
     }
 
-    /* Semantic Footer Styling */
     footer {
       background-color: #ffffff;
       border-top: 1px solid #dee2e6;
@@ -198,12 +180,9 @@
 </head>
 <body>
 
-  <!-- =========================================================
-       HTML5 HEADER & NAVIGATION
-       ========================================================= -->
   <header>
     <h1>TechMart Online Shopping Catalogue</h1>
-    <p>Student Mini-Project | Laptops, Accessories, Audio &amp; Study Essentials</p>
+    <p>Mini-Project | Laptops, Accessories, Audio &amp; Study Essentials</p>
   </header>
 
   <nav>
@@ -214,12 +193,8 @@
     <a href="#cart-section">Shopping Cart</a>
   </nav>
 
-  <!-- =========================================================
-       MAIN CATALOGUE CONTENT
-       ========================================================= -->
   <main>
 
-    <!-- MAIN CATEGORY: LAPTOPS (12 Models) -->
     <section id="laptops">
       <h2>Category: Laptops</h2>
       <div class="product-list">
@@ -359,8 +334,7 @@
       </div>
     </section>
 
-    <!-- SECONDARY CATEGORY 1: ACCESSORIES (3 Lightweight Items) -->
-    <section id="accessories">
+  <section id="accessories">
       <h2>Accessories</h2>
       <div class="product-list">
 
@@ -400,7 +374,6 @@
       </div>
     </section>
 
-    <!-- SECONDARY CATEGORY 2: AUDIO (3 Lightweight Items) -->
     <section id="audio">
       <h2>Audio</h2>
       <div class="product-list">
@@ -441,7 +414,6 @@
       </div>
     </section>
 
-    <!-- SECONDARY CATEGORY 3: BOOKS & STATIONERY (2 Lightweight Items) -->
     <section id="books">
       <h2>Books &amp; Stationery</h2>
       <div class="product-list">
@@ -461,9 +433,9 @@
       </div>
     </section>
 
-    <!-- SHOPPING CART & BILL CALCULATION SECTION -->
     <section id="cart-section">
       <h2>Shopping Cart &amp; Bill Summary</h2>
+     <button onclick="clearCart()" style="margin-top: 10px; padding: 6px 12px; background-color: #ff0000; color: white; border: none; cursor: pointer; font-size: medium;">Clear Cart</button>
       <p id="empty-cart">Your cart is currently empty. Click "Add to Cart" on any product above.</p>
       <ul id="cart-items"></ul>
       <div class="bill-summary">
@@ -473,22 +445,14 @@
 
   </main>
 
-  <!-- =========================================================
-       HTML5 FOOTER
-       ========================================================= -->
   <footer>
-    <p>Project Studio Mini-Project (Topic #9: Online Shopping Catalogue) | B.Tech CSE 1st Semester</p>
+    <p>Project Studio Mini-Project (Online Shopping Catalogue) | B.Tech CSE 1st Semester</p>
   </footer>
 
-  <!-- =========================================================
-       MINIMAL JAVASCRIPT (16 Lines - Easy to Explain in Viva)
-       ========================================================= -->
   <script>
-    // Variables to store total item count and total bill amount
     var itemCount = 0;
     var totalAmount = 0;
 
-    // Function triggered when an "Add to Cart" button is clicked
     function addToCart(name, price) {
       var cartList = document.getElementById("cart-items");
       var emptyMsg = document.getElementById("empty-cart");
@@ -500,9 +464,24 @@
 
       itemCount = itemCount + 1;
       totalAmount = totalAmount + price;
+      
       document.getElementById("cart-count").textContent = itemCount;
       document.getElementById("cart-total").textContent = totalAmount;
     }
+
+  
+function clearCart() {
+  itemCount = 0;
+  totalAmount = 0;
+
+  document.getElementById("cart-items").innerHTML = "";
+  document.getElementById("cart-count").textContent = itemCount;
+  document.getElementById("cart-total").textContent = totalAmount;
+
+  var emptyMsg = document.getElementById("empty-cart");
+  if (emptyMsg) { emptyMsg.style.display = "block"; }
+}
+
   </script>
 
 </body>
