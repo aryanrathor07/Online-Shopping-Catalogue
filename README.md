@@ -3,7 +3,7 @@
 ## Student Details
 - Name: Aryan Rathor
 - Course: B.Tech Computer Science and Engineering (1st Semester)
-- Subject: Project Studio (Mini Project)
+- Subject: Project Studio
 - Institution: ITM University, Gwalior
 
 ## Project Description
