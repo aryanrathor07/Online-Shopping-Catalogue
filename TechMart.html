@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TechMart - Online Shopping Catalogue</title>
+  <meta name="description" content="A clean 1st-semester B.Tech academic prototype for an Online Shopping Catalogue with product categories, shopping cart, and bill calculation." />
+  <meta property="og:title" content="TechMart - Online Shopping Catalogue" />
+  <meta property="og:description" content="A clean 1st-semester B.Tech academic prototype for an Online Shopping Catalogue with product categories, shopping cart, and bill calculation." />
+  <meta property="og:type" content="website" />
+
+  <!-- =========================================================
+       CSS3 SECTION: Minimalist Box Model & Flexbox Only
+       Color Rule: 90% Neutral (#f8f9fa, #ffffff),
+                   8% Dark Text & Thin Borders (#212529, #dee2e6),
+                   2% Single Accent Blue (#2563eb) for Buttons
+       ========================================================= -->
+  <style>
+    /* Reset basic spacing using the Box Model */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Page background (90% neutral light gray) and clean system font */
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #f8f9fa;
+      color: #212529;
+      line-height: 1.5;
+    }
+
+    /* Semantic Header Styling */
+    header {
+      background-color: #ffffff;
+      border-bottom: 1px solid #dee2e6;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 26px;
+      margin-bottom: 6px;
+      color: #212529;
+    }
+
+    header p {
+      font-size: 14px;
+      color: #495057;
+    }
+
+    /* Semantic Navigation Bar using Flexbox */
+    nav {
+      background-color: #ffffff;
+      border-bottom: 1px solid #dee2e6;
+      padding: 12px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #212529;
+      font-size: 14px;
+      font-weight: bold;
+      padding: 4px 8px;
+      border: 1px solid transparent;
+    }
+
+    nav a:hover {
+      border-bottom: 1px solid #2563eb;
+      color: #2563eb;
+    }
+
+    /* Main Content Container centered with max-width */
+    main {
+      max-width: 1140px;
+      margin: 24px auto;
+      padding: 0 16px;
+    }
+
+    /* Category Section Spacing */
+    section {
+      margin-bottom: 36px;
+    }
+
+    section h2 {
+      font-size: 20px;
+      margin-bottom: 14px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #dee2e6;
+      color: #212529;
+    }
+
+    /* Flexbox Container for Product Cards */
+    .product-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    /* Individual Product Card (Semantic <article>) using Box Model */
+    .product-card {
+      background-color: #ffffff;
+      border: 1px solid #dee2e6;
+      padding: 16px;
+      width: 265px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* Clean Placeholder Image Styling for Laptops */
+    .product-card img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      background-color: #f1f3f5;
+      border: 1px solid #dee2e6;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .product-card h3 {
+      font-size: 16px;
+      margin-bottom: 6px;
+      color: #212529;
+    }
+
+    .product-specs {
+      font-size: 13px;
+      color: #495057;
+      margin-bottom: 12px;
+    }
+
+    .product-price {
+      font-size: 16px;
+      font-weight: bold;
+      color: #212529;
+      margin-bottom: 12px;
+    }
+
+    /* 2% Single Accent Color applied to Add to Cart Buttons */
+    .add-btn {
+      background-color: #ff0000;
+      color: #ffffff;
+      border: 1px solid #c70404;
+      padding: 9px 12px;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .add-btn:hover {
+      background-color: #b90101;
+    }
+
+    /* Shopping Cart & Bill Summary Section */
+    #cart-section {
+      background-color: #ffffff;
+      border: 1px solid #dee2e6;
+      padding: 20px;
+      margin-top: 20px;
+    }
+
+    #cart-items {
+      margin: 12px 0 16px 20px;
+      color: #212529;
+      font-size: 14px;
+    }
+
+    #cart-items li {
+      margin-bottom: 6px;
+    }
+
+    .bill-summary {
+      border-top: 1px solid #dee2e6;
+      padding-top: 12px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    /* Semantic Footer Styling */
+    footer {
+      background-color: #ffffff;
+      border-top: 1px solid #dee2e6;
+      text-align: center;
+      padding: 16px;
+      margin-top: 40px;
+      font-size: 13px;
+      color: #495057;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =========================================================
+       HTML5 HEADER & NAVIGATION
+       ========================================================= -->
+  <header>
+    <h1>TechMart Online Shopping Catalogue</h1>
+    <p>Student Mini-Project | Laptops, Accessories, Audio &amp; Study Essentials</p>
+  </header>
+
+  <nav>
+    <a href="#laptops">Laptops (11)</a>
+    <a href="#accessories">Accessories (3)</a>
+    <a href="#audio">Audio (3)</a>
+    <a href="#books">Books &amp; Stationery (1)</a>
+    <a href="#cart-section">Shopping Cart</a>
+  </nav>
+
+  <!-- =========================================================
+       MAIN CATALOGUE CONTENT
+       ========================================================= -->
+  <main>
+
+    <!-- MAIN CATEGORY: LAPTOPS (12 Models) -->
+    <section id="laptops">
+      <h2>Category: Laptops</h2>
+      <div class="product-list">
+
+        <article class="product-card">
+          <div>
+            <img src="HP 15s.jpg" alt="HP 15s Laptop" />
+            <h3>HP 15s</h3>
+            <p class="product-specs">Intel Core i3 12th Gen | 8GB RAM | 512GB SSD | 15.6" FHD</p>
+          </div>
+          <div>
+            <p class="product-price">₹38,990</p>
+            <button class="add-btn" onclick="addToCart('HP 15s Laptop', 38990)">Add to Cart</button>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div>
+            <img src="Lenovo IdeaPad Slim 3.jpg" alt="Lenovo IdeaPad Slim 3i Laptop" />
+            <h3>Lenovo IdeaPad Slim 3</h3>
+            <p class="product-specs">Intel Core i5 12th Gen | 16GB RAM | 512GB SSD | 15.6" FHD</p>
+          </div>
+          <div>
+            <p class="product-price">₹46,490</p>
+            <button class="add-btn" onclick="addToCart('Lenovo IdeaPad Slim 3', 46490)">Add to Cart</button>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div>
+            <img src="Dell Inspirion 3520.jpg" alt="Dell Inspiron 15 3520 Laptop" />
+            <h3>Dell Inspiron 15 3520</h3>
+            <p class="product-specs">Intel Core i3 12th Gen | 8GB RAM | 512GB SSD | 15.6" FHD</p>
+          </div>
+          <div>
+            <p class="product-price">₹39,990</p>
+            <button class="add-btn" onclick="addToCart('Dell Inspiron 15 3520', 39990)">Add to Cart</button>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div>
+            <img src="Acer Aspire Lite.jpg" alt="Acer Aspire Lite Laptop" />
+            <h3>Acer Aspire Lite</h3>
+            <p class="product-specs">AMD Ryzen 5 5500U | 16GB RAM | 512GB SSD | 15.6" FHD</p>
+          </div>
+          <div>
+            <p class="product-price">₹36,990</p>
+            <button class="add-btn" onclick="addToCart('Acer Aspire Lite', 36990)">Add to Cart</button>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div>
+            <img src="Asus vivobook 15.jpg" alt="ASUS VivoBook 15 Laptop" />
+            <h3>ASUS VivoBook 15</h3>
+            <p class="product-specs">Intel Core i5 13th Gen | 16GB RAM | 512GB SSD | 15.6" FHD</p>
+          </div>
+          <div>
+            <p class="product-price">₹51,990</p>
+            <button class="add-btn" onclick="addToCart('ASUS VivoBook 15', 51990)">Add to Cart</button>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div>
+            <img src="Apple MacBook Air.jpg" alt="Apple MacBook Air M1 Laptop" />
+            <h3>Apple MacBook Air M1</h3>
+            <p class="product-specs">Apple M1 Chip | 8GB RAM | 256GB SSD | 13.3" Retina</p>
+          </div>
+          <div>
+            <p class="product-price">₹69,900</p>
+            <button class="add-btn" onclick="addToCart('Apple MacBook Air M1', 69900)">Add to Cart</button>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div>
+            <img src="HP Pavilion 14.jpg" alt="HP Pavilion 14 Laptop" />
+            <h3>HP Pavilion 14</h3>
+            <p class="product-specs">Intel Core i5 13th Gen | 16GB RAM | 512GB SSD | 14" IPS</p>
+          </div>
+          <div>
+            <p class="product-price">₹62,500</p>
+            <button class="add-btn" onclick="addToCart('HP Pavilion 14', 62500)">Add to Cart</button>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div>
+            <img src="Lenovo Thinkpad E14.jpg" alt="Lenovo ThinkPad E14 Laptop" />
+            <h3>Lenovo ThinkPad E14</h3>
+            <p class="product-specs">AMD Ryzen 5 | 16GB RAM | 512GB SSD | 14" FHD</p>
+          </div>
+          <div>
+            <p class="product-price">₹54,990</p>
+            <button class="add-btn" onclick="addToCart('Lenovo ThinkPad E14', 54990)">Add to Cart</button>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div>
+            <img src="Asus TUF F15.jpg" alt="ASUS TUF Gaming F15 Laptop" />
+            <h3>ASUS TUF Gaming F15</h3>
+            <p class="product-specs">Intel Core i5 11th Gen | 16GB RAM | 512GB SSD | RTX 2050</p>
+          </div>
+          <div>
+            <p class="product-price">₹56,990</p>
+            <button class="add-btn" onclick="addToCart('ASUS TUF Gaming F15', 56990)">Add to Cart</button>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div>
+            <img src="MSI Modern 14.jpg" alt="MSI Modern 14 Laptop" />
+            <h3>MSI Modern 14</h3>
+            <p class="product-specs">Intel Core i3 12th Gen | 8GB RAM | 512GB SSD | 14" FHD</p>
+          </div>
+          <div>
+            <p class="product-price">₹34,990</p>
+            <button class="add-btn" onclick="addToCart('MSI Modern 14', 34990)">Add to Cart</button>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div>
+            <img src="Acer Nitro V.jpg" alt="Acer Nitro V Laptop" />
+            <h3>Acer Nitro V</h3>
+            <p class="product-specs">Intel Core i5 13th Gen | 16GB RAM | 512GB SSD | RTX 4050</p>
+          </div>
+          <div>
+            <p class="product-price">₹72,990</p>
+            <button class="add-btn" onclick="addToCart('Acer Nitro V', 72990)">Add to Cart</button>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- SECONDARY CATEGORY 1: ACCESSORIES (3 Lightweight Items) -->
+    <section id="accessories">
+      <h2>Accessories</h2>
+      <div class="product-list">
+
+        <article class="product-card">
+          <div>
+            <h3>Logitech B170 Wireless Mouse</h3>
+            <p class="product-specs">2.4GHz USB Receiver | 12-Month Battery Life</p>
+          </div>
+          <div>
+            <p class="product-price">₹595</p>
+            <button class="add-btn" onclick="addToCart('Logitech B170 Wireless Mouse', 595)">Add to Cart</button>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div>
+            <h3>Zebronics Wireless Keyboard &amp; Mouse</h3>
+            <p class="product-specs">Compact Combo | Spill-Resistant Keys</p>
+          </div>
+          <div>
+            <p class="product-price">₹999</p>
+            <button class="add-btn" onclick="addToCart('Zebronics Keyboard & Mouse', 999)">Add to Cart</button>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div>
+            <h3>Portronics Aluminum Laptop Stand</h3>
+            <p class="product-specs">Foldable | 6 Adjustable Height Angles</p>
+          </div>
+          <div>
+            <p class="product-price">₹699</p>
+            <button class="add-btn" onclick="addToCart('Portronics Laptop Stand', 699)">Add to Cart</button>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- SECONDARY CATEGORY 2: AUDIO (3 Lightweight Items) -->
+    <section id="audio">
+      <h2>Audio</h2>
+      <div class="product-list">
+
+        <article class="product-card">
+          <div>
+            <h3>boAt Rockerz 450 Headphones</h3>
+            <p class="product-specs">Bluetooth Wireless | 15 Hours Playback</p>
+          </div>
+          <div>
+            <p class="product-price">₹1,499</p>
+            <button class="add-btn" onclick="addToCart('boAt Rockerz 450 Headphones', 1499)">Add to Cart</button>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div>
+            <h3>JBL Tune 215 Wired Earphones</h3>
+            <p class="product-specs">Pure Bass Sound | Built-in Microphone</p>
+          </div>
+          <div>
+            <p class="product-price">₹649</p>
+            <button class="add-btn" onclick="addToCart('JBL Tune 215 Earphones', 649)">Add to Cart</button>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div>
+            <h3>Zebronics Zeb-Warrior 2.0 Speakers</h3>
+            <p class="product-specs">10W Output | USB Powered + AUX</p>
+          </div>
+          <div>
+            <p class="product-price">₹749</p>
+            <button class="add-btn" onclick="addToCart('Zebronics 2.0 Speakers', 749)">Add to Cart</button>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- SECONDARY CATEGORY 3: BOOKS & STATIONERY (2 Lightweight Items) -->
+    <section id="books">
+      <h2>Books &amp; Stationery</h2>
+      <div class="product-list">
+
+
+        <article class="product-card">
+          <div>
+            <h3>Classmate Spiral Notebook Pack</h3>
+            <p class="product-specs">Set of 4 Notebooks | A4 Size | 200 Pages Each</p>
+          </div>
+          <div>
+            <p class="product-price">₹320</p>
+            <button class="add-btn" onclick="addToCart('Classmate Notebook Pack', 320)">Add to Cart</button>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- SHOPPING CART & BILL CALCULATION SECTION -->
+    <section id="cart-section">
+      <h2>Shopping Cart &amp; Bill Summary</h2>
+      <p id="empty-cart">Your cart is currently empty. Click "Add to Cart" on any product above.</p>
+      <ul id="cart-items"></ul>
+      <div class="bill-summary">
+        Total Items: <span id="cart-count">0</span> | Total Bill: ₹<span id="cart-total">0</span>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================
+       HTML5 FOOTER
+       ========================================================= -->
+  <footer>
+    <p>Project Studio Mini-Project (Topic #9: Online Shopping Catalogue) | B.Tech CSE 1st Semester</p>
+  </footer>
+
+  <!-- =========================================================
+       MINIMAL JAVASCRIPT (16 Lines - Easy to Explain in Viva)
+       ========================================================= -->
+  <script>
+    // Variables to store total item count and total bill amount
+    var itemCount = 0;
+    var totalAmount = 0;
+
+    // Function triggered when an "Add to Cart" button is clicked
+    function addToCart(name, price) {
+      var cartList = document.getElementById("cart-items");
+      var emptyMsg = document.getElementById("empty-cart");
+      if (emptyMsg) { emptyMsg.style.display = "none"; }
+
+      var li = document.createElement("li");
+      li.textContent = name + " - ₹" + price;
+      cartList.appendChild(li);
+
+      itemCount = itemCount + 1;
+      totalAmount = totalAmount + price;
+      document.getElementById("cart-count").textContent = itemCount;
+      document.getElementById("cart-total").textContent = totalAmount;
+    }
+  </script>
+
+</body>
+</html>
