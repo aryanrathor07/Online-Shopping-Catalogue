@@ -16,6 +16,6 @@ TechMart is a minimalist, responsive web-based shopping catalogue focused on lap
 
 ## Instructions to Run
 1. **Live Demo:** Open the GitHub Pages link provided in the repository settings/description.
-2. **Website Link:** https://<aryanrator07>.github.io/TechMart/
+2. **Website Link:** https://aryanrathor07.github.io/TechMart/
 - Simply click the link above (also available in the repository's **About** section) to view and interact with the live shopping catalogue.
 
