@@ -1,7 +1,7 @@
 # TechMart — Online Shopping Catalogue
 
-## Student Details
-- Name: Aryan Rathor
+## Students Details
+- Name: Aryan Rathor, Krishna Tomar, Jatin Prajapati
 - Course: B.Tech Computer Science and Engineering (1st Semester)
 - Subject: Project Studio
 - Institution: ITM University, Gwalior
