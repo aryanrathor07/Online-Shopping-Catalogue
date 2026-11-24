@@ -8,175 +8,9 @@
   <meta property="og:title" content="TechMart - Online Shopping Catalogue" />
   <meta property="og:description" content="A clean 1st-semester B.Tech academic prototype for an Online Shopping Catalogue with product categories, shopping cart, and bill calculation." />
   <meta property="og:type" content="website" />
+  <link rel="stylesheet" href="TechMart.css" />
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
 
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background-color: #f8f9fa;
-      color: #212529;
-      line-height: 1.5;
-    }
-
-    header {
-      background-color: #ffffff;
-      border-bottom: 1px solid #dee2e6;
-      padding: 20px;
-      text-align: center;
-    }
-
-    header h1 {
-      font-size: 26px;
-      margin-bottom: 6px;
-      color: #212529;
-    }
-
-    header p {
-      font-size: 14px;
-      color: #495057;
-    }
-
-    nav {
-      background-color: #ffffff;
-      border-bottom: 1px solid #dee2e6;
-      padding: 12px 20px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: #212529;
-      font-size: 14px;
-      font-weight: bold;
-      padding: 4px 8px;
-      border: 1px solid transparent;
-    }
-
-    nav a:hover {
-      border-bottom: 1px solid #2563eb;
-      color: #2563eb;
-    }
-
-    main {
-      max-width: 1140px;
-      margin: 24px auto;
-      padding: 0 16px;
-    }
-
-    section {
-      margin-bottom: 36px;
-    }
-
-    section h2 {
-      font-size: 20px;
-      margin-bottom: 14px;
-      padding-bottom: 6px;
-      border-bottom: 1px solid #dee2e6;
-      color: #212529;
-    }
-
-    .product-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-
-    .product-card {
-      background-color: #ffffff;
-      border: 1px solid #dee2e6;
-      padding: 16px;
-      width: 265px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .product-card img {
-      width: 100%;
-      height: 140px;
-      object-fit: cover;
-      background-color: #f1f3f5;
-      border: 1px solid #dee2e6;
-      margin-bottom: 12px;
-      display: block;
-    }
-    .product-card img {
-      font-size: 16px;
-      margin-bottom: 6px;
-      color: #212529;
-    }
-
-    .product-specs {
-      font-size: 13px;
-      color: #495057;
-      margin-bottom: 12px;
-    }
-
-    .product-price {
-      font-size: 16px;
-      font-weight: bold;
-      color: #212529;
-      margin-bottom: 12px;
-    }
-
-  
-    .add-btn {
-      background-color: #ff0000;
-      color: #ffffff;
-      border: 1px solid #c70404;
-      padding: 9px 12px;
-      font-size: 14px;
-      font-weight: bold;
-      cursor: pointer;
-      width: 100%;
-    }
-
-    .add-btn:hover {
-      background-color: #b90101;
-    }
-
-    #cart-section {
-      background-color: #ffffff;
-      border: 1px solid #dee2e6;
-      padding: 20px;
-      margin-top: 20px;
-    }
-
-    #cart-items {
-      margin: 12px 0 16px 20px;
-      color: #212529;
-      font-size: 14px;
-    }
-
-    #cart-items li {
-      margin-bottom: 6px;
-    }
-
-    .bill-summary {
-      border-top: 1px solid #dee2e6;
-      padding-top: 12px;
-      font-size: 16px;
-      font-weight: bold;
-    }
-
-    footer {
-      background-color: #ffffff;
-      border-top: 1px solid #dee2e6;
-      text-align: center;
-      padding: 16px;
-      margin-top: 40px;
-      font-size: 13px;
-      color: #495057;
-    }
-  </style>
 </head>
 <body>
 
@@ -186,10 +20,9 @@
   </header>
 
   <nav>
-    <a href="#laptops">Laptops (11)</a>
+    <a href="#laptops">Laptops (14)</a>
     <a href="#accessories">Accessories (3)</a>
     <a href="#audio">Audio (3)</a>
-    <a href="#books">Books &amp; Stationery (1)</a>
     <a href="#cart-section">Shopping Cart</a>
   </nav>
 
@@ -330,6 +163,41 @@
             <button class="add-btn" onclick="addToCart('Acer Nitro V', 72990)">Add to Cart</button>
           </div>
         </article>
+        <article class="product-card">
+          <div>
+            <img src="Acer-Laptop-Aspire-5-Intel-Core-i5-12th-Gen-1235U-1-30GHz-8GB-Memory-512-GB-NVMe-SSD-Intel-Iris-Xe-Graphics-15-6-Windows-11-Home-64-bit-A515-57-53T2_a27c4e03-00c1-4e3f-9956-62f7195ae58b.a21325f9ba53ceda0365c.avif" alt="Acer Aspire 5 Laptop" />
+            <h3>Acer Aspire 5</h3>
+            <p class="product-specs">Intel Core i5 12th Gen | 8GB RAM | 512GB SSD | 15.6" FHD</p>
+          </div>
+          <div>
+            <p class="product-price">₹63,999</p>
+            <button class="add-btn" onclick="addToCart('Acer Aspire 5',63999)">Add to Cart</button>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div>
+            <img src="Asus Rog Strix.webp" alt="ASUS ROG Strix G16 Laptop" />
+            <h3>ASUS ROG Strix G16</h3>
+            <p class="product-specs">Intel Core i7 13th Gen | 16GB RAM | 1TB SSD | RTX 5060</p>
+          </div>
+          <div>
+            <p class="product-price">₹2,99,990</p>
+            <button class="add-btn" onclick="addToCart('ASUS ROG Strix G16',299990)">Add to Cart</button>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div>
+            <img src="MSI Katana 15.jpg" alt="MSI Katana 15 Laptop" />
+            <h3>MSI Katana 15</h3>
+            <p class="product-specs">Intel Core i7 14th Gen | 16GB RAM | 512GB SSD | RTX 5050</p>
+          </div>
+          <div>
+            <p class="product-price">₹1,77,999</p>
+            <button class="add-btn" onclick="addToCart('MSI Katana 15',177999)">Add to Cart</button>
+          </div>
+        </article>
 
       </div>
     </section>
@@ -356,7 +224,7 @@
           </div>
           <div>
             <p class="product-price">₹999</p>
-            <button class="add-btn" onclick="addToCart('Zebronics Keyboard & Mouse', 999)">Add to Cart</button>
+            <button class="add-btn" onclick="addToCart('Zebronics Keyboard &amp; Mouse', 999)">Add to Cart</button>
           </div>
         </article>
 
@@ -414,25 +282,7 @@
       </div>
     </section>
 
-    <section id="books">
-      <h2>Books &amp; Stationery</h2>
-      <div class="product-list">
-
-
-        <article class="product-card">
-          <div>
-            <h3>Classmate Spiral Notebook Pack</h3>
-            <p class="product-specs">Set of 4 Notebooks | A4 Size | 200 Pages Each</p>
-          </div>
-          <div>
-            <p class="product-price">₹320</p>
-            <button class="add-btn" onclick="addToCart('Classmate Notebook Pack', 320)">Add to Cart</button>
-          </div>
-        </article>
-
-      </div>
-    </section>
-
+    
     <section id="cart-section">
       <h2>Shopping Cart &amp; Bill Summary</h2>
      <button onclick="clearCart()" style="margin-top: 10px; padding: 6px 12px; background-color: #ff0000; color: white; border: none; cursor: pointer; font-size: medium;">Clear Cart</button>
@@ -449,40 +299,6 @@
     <p>Project Studio Mini-Project (Online Shopping Catalogue) | B.Tech CSE 1st Semester</p>
   </footer>
 
-  <script>
-    var itemCount = 0;
-    var totalAmount = 0;
-
-    function addToCart(name, price) {
-      var cartList = document.getElementById("cart-items");
-      var emptyMsg = document.getElementById("empty-cart");
-      if (emptyMsg) { emptyMsg.style.display = "none"; }
-
-      var li = document.createElement("li");
-      li.textContent = name + " - ₹" + price;
-      cartList.appendChild(li);
-
-      itemCount = itemCount + 1;
-      totalAmount = totalAmount + price;
-      
-      document.getElementById("cart-count").textContent = itemCount;
-      document.getElementById("cart-total").textContent = totalAmount;
-    }
-
-  
-function clearCart() {
-  itemCount = 0;
-  totalAmount = 0;
-
-  document.getElementById("cart-items").innerHTML = "";
-  document.getElementById("cart-count").textContent = itemCount;
-  document.getElementById("cart-total").textContent = totalAmount;
-
-  var emptyMsg = document.getElementById("empty-cart");
-  if (emptyMsg) { emptyMsg.style.display = "block"; }
-}
-
-  </script>
-
+  <script src="TechMart.js"></script>
 </body>
 </html>
